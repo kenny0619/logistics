@@ -1,0 +1,37 @@
+{
+  "name": "logistics",
+  "version": "1.0.0",
+  "description": "simplified web app for logistics company",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenny0619/logistics.git"
+  },
+  "keywords": [
+    "Admin",
+    "Rider",
+    "User",
+    "Partner"
+  ],
+  "author": "Ibukunoluwa Kehinde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kenny0619/logistics/issues"
+  },
+  "homepage": "https://github.com/kenny0619/logistics#readme",
+  "dependencies": {
+    "accesscontrol": "^2.2.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.0"
+  }
+}
