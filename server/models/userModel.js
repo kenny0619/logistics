@@ -14,8 +14,8 @@ const UserSchema = new Schema({
   },
   role: {
     type: String,
-    default: 'user',
-    enum: ['admin', 'rider', 'user', 'partner'],
+    default: 'rider',
+    enum: ['admin', 'rider', 'partner'],
   },
   accessToken: {
     type: String,
