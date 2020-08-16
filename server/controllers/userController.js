@@ -1,9 +1,11 @@
+/* eslint-disable no-return-await */
+/* eslint-disable no-underscore-dangle */
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
 
 async function hashPassword(password) {
-  return await bcrypt.hash(password, 10);
+  return await bcrypt.hash(password, 8);
 }
 async function validatePassword(plainPassword, hashedPassword) {
   return await bcrypt.compare(plainPassword, hashedPassword);
@@ -42,6 +44,47 @@ exports.login = async (req, res, next) => {
     res.status(200).json({
       data: { email: user.email, role: user.role },
       accessToken,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getUser = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    if (!user) return next(new Error('User does not exist'));
+    res.status(200).json({
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateUser = async (req, res, next) => {
+  try {
+    const update = req.body;
+    const { userId } = req.params;
+    await User.findByIdAndUpdate(userId, update);
+    const user = await User.findById(userId);
+    res.status(200).json({
+      data: user,
+      message: 'User has been updated',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.deleteUser = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    await User.findByIdAndDelete(userId);
+    res.status(200).json({
+      data: null,
+      message: 'User has been deleted',
     });
   } catch (error) {
     next(error);
