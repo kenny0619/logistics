@@ -2,8 +2,9 @@
   "name": "logistics",
   "version": "1.0.0",
   "description": "simplified web app for logistics company",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
+    "start": "nodemon main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
